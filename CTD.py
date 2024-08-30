@@ -5,6 +5,7 @@ if len(sys.argv) != 2:
 filename=sys.argv[1]
 	
 #Abrir archivo en modo lectura
+
 try:
 	f1_in = open (filename,"r")
 	print("f1_in",file=sys.stderr)
@@ -12,6 +13,7 @@ except:
 	print("error")
 
 # Lista donde se guardarán las duplas que hagan match
+
 matches = []
 
 
