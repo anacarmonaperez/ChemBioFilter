@@ -2,7 +2,7 @@
 Pipeline designed to evaluate and filter the relations between chemical compounds and biomedical terms from literature.
 
 ## 1. CTD.py
-To use this script, download the CTD file from the [CTD database] (https://ctdbase.org/downloads/), remove the headers, and save it as tsv file
+To use this script, download the CTD file from the CTD database (https://ctdbase.org/downloads/), remove the headers, and save it as tsv file
 This script extracts columns two and five from the file, which contain MeSH and GO identifiers, and saves the output as "CTD_extraido.txt."
 ```
 python3 CTD.py CTDfile
