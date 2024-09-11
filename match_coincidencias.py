@@ -1,7 +1,7 @@
 import sys
 
 if len(sys.argv) != 3:  # Se esperan 2 argumentos: fichero_CoMentoriginal, CTD_extraido_u
-    print("Uso: match_final.py CoMentoriginal CTD_extraido_u", file=sys.stderr)
+    print("Uso: match_coincidencias.py CoMentoriginal CTD_extraido_u", file=sys.stderr)
     exit()
 
 # Definir los argumentos
