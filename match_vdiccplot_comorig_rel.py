@@ -6,7 +6,7 @@ import pandas as pd
 
 
 if len(sys.argv) != 4: #si no tiene 4 argumentos da error
-	print("Uso: mmmm.py  fichero_CoMent_profundiad CTD_extraido_profundiad   columna_datos", file=sys.stderr)
+	print("Uso: match_vdiccplot_comorig_rel.py  coment_updated.txt CTD_updated.txt 7", file=sys.stderr)
 	exit()
 
 #definir cada argumento	
