@@ -1,7 +1,7 @@
 import sys
 
 if len(sys.argv) != 3:
-	print("python3 match_coment_CTD_GO.py archivo output.txt") 
+	print("python3 match_coment_CTDcoment_output.py archivo output.txt") 
 	sys.exit()
 	
 #Definir cada argumento	
