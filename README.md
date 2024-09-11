@@ -1,25 +1,27 @@
 # Filtering and Evaluation of Chemical-Biomedical Relationships
 This pipeline is designed to evaluate and filter the relationships between chemical compounds and biomedical terms from the literature.
+These terms are MeSH (Medical Subject Headings) to index articles in the biomedical field, standardizing terms for efficient literature search and retrieval, and GO (Gene Ontology) is a standardized framework that describes gene functions across species, categorizing genes and their products based on molecular function, biological processes, and cellular components. 
+
 
 ## 1. CTD.py
 To use this script, download the CTD file from the [CTD database](https://ctdbase.org/downloads/), remove the headers, and save it as tsv file
-This script extracts columns two and five from the file, which contain MeSH and GO identifiers, and saves the output as "CTD_extraido.txt."
+This script extracts columns which contain MeSH and GO identifiers, and saves the output as _CTD_extraido.txt_.
 ```
 python3 CTD.py CTDfile
 ```
-Finally, remove the duplicates from the "CTD_extraido.txt" file and save it like another file (from now on, refered as "CTD_extraido_u.txt")
+Finally, remove the duplicates from the _CTD_extraido.txt_ file and save it like another file (from now on, refered as _CTD_extraido_u.txt_)
 
 ## 2. match_coincidencias.py
-To use this script, you need the CTD_extraido_u.txt file and the CoMent_MeshDcomp-GO_2022_s file.
-CoMent_MeshDcomp-GO_2022_s file contains MeSH and GO identifiers , number of articles associated with the MeSH term, with the GO term, both terms and p-value.
-This script searches for MeSH and GO terms that are common between them and save it as.
+You need the _CTD_extraido_u.txt_ file and the _CoMent_MeshDcomp-GO_2022_s_ file which you obtain from .....
+_CoMent_MeshDcomp-GO_2022_s_ file contains MeSH and GO identifiers, number of articles associated with the MeSH term, with the GO term, with both terms and p-value.
+The script searches for MeSH and GO terms that are common between both files and saves them in a file called _match_final.txt_
 ```
 python3 match_coindicencias.py CoMent_MeshDcomp-GO_2022_s CTD_extraido_u.txt
 ```
 
 ## 3. match_vdiccplot_comorig.py
-To use this script, you need the CTD_extraido_u.txt file, the CoMent_MeshDcomp-GO_2022_s file, and specify the column you want to represent in the graphics.
-Column five represents the p-value, and column four represents the number of articles.
+The _CTD_extraido_u.txt_ file, the _CoMent_MeshDcomp-GO_2022_s_ file, and specify the column are required if you want to represent in the graphics.
+The only valid options are column five (p-value) and column four (number of articles).
 ```
 python3 match_vdiccplot_comorig.py CoMent_MeshDcomp-GO_2022_s CTD_extraido_u.txt column_number [option_n]
 ```
@@ -29,41 +31,26 @@ option_n specifies what you want to represent:
 - If you want to represent the p-value, leave option_n blank.
 
 ## 4. go-basic3.py
-To use this script, you need go-basic.obo which you download by GO database (http://geneontology.org/docs/download-ontology/)
-This script processes an OBO file to build a graph, filters edges, calculates distances from nodes to three main GO terms, and saves the result to "output.txt" file.
+The _go-basic.obo_, which you download by [GO database](http://geneontology.org/docs/download-ontology/), is used as an argument.
+This script processes the OBO file and calculates the depth of every single GO term (distance with the top term of the ontology) and saves them in a file called _output.txt_
 ```
 python3 go-basic3.py go-basic.obo
 ```
 
 ## 5. match_coment_CTDcoment_output.py
-To use this scripts, you need CoMent_MeshDcomp-GO_2022_s or CTD_extraido_u.txt and output.txt file
-This script reads two input files, matches and updates data from one file with information from the other, and writes the combined results to a new output file.
+Besides _output.txt_, there is another file required as input, either _CoMent_MeshDcomp-GO_2022_s_, either _CTD_extraido_u.txt_ (first argument)
+This script reads both input files, matches and combines their information and saves them as a new output file (_coment_updated.txt or CTD_updated.txt_)
 ```
-python3 match_coment_CTDcoment_output.py archivo output.txt
+python3 match_coment_CTDcoment_output.py first_file output.txt
 ```
-"Archivo" can be CoMent_MeshDcomp-GO_2022_s or CTD_extraido_u.txt and the results are saved as coment_updated.txt or CTD_updated.txt, respectively.
+To execute the scripts correctly, you need to first run the script with the _CoMent_MeshDcomp-GO_2022_s_ file as input, and then run the next script with the _CTD_extraido_u.txt_ file, repeating this process twice to obtain the necessary files for the subsequent script.
 
 ## 6. match_vdiccplot_comorig_rel.py
-To use this script, you need coment_updated.txt, CTD_updated.txt and column number, which is the distances from nodes. 
-This script reads two input files containing ontology data, processes and matches the data, and generates histograms to visualize the depth distributions of different ontologies across three categories: "Match," "Coment," and "CTD."
+You need _coment_updated.txt_, _CTD_updated.txt_ and column number. The first version of this script only accepts 7 as a valid argument of column number, this being the depth of the GO terms.
+This script reads two input files containing ontology data, processes and matches the data, and generates histograms to visualize the depth distributions of different ontologies across coment data, CTD data and the matches between both datasets.
 ```
 python3 match_vdiccplot_comorig_rel.py coment_updated.txt CTD_updated.txt 7
 ```
-The column is number seven, representing the depth distributions of different ontologies across three categories: "Match," "Coment," and "CTD."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
