@@ -4,7 +4,7 @@ These terms are MeSH (Medical Subject Headings) to index articles in the biomedi
 
 
 ## 1. CTD.py
-To use this script, download the CTD file from the [CTD database](https://ctdbase.org/downloads/), remove the headers, and save it as tsv file
+To use this script, download the CTD file from the [CTD database](https://ctdbase.org/downloads/), remove the headers, and save it as tsv file.
 This script extracts columns which contain MeSH and GO identifiers, and saves the output as _CTD_extraido.txt_.
 ```
 python3 CTD.py CTDfile
@@ -32,14 +32,14 @@ option_n specifies what you want to represent:
 
 ## 4. go-basic3.py
 The _go-basic.obo_, which you download by [GO database](http://geneontology.org/docs/download-ontology/), is used as an argument.
-This script processes the OBO file and calculates the depth of every single GO term (distance with the top term of the ontology) and saves them in a file called _output.txt_
+This script processes the OBO file and calculates the depth of every single GO term (distance with the top term of the ontology) and saves them in a file called _output.txt_.
 ```
 python3 go-basic3.py go-basic.obo
 ```
 
 ## 5. match_coment_CTDcoment_output.py
-Besides _output.txt_, there is another file required as input, either _CoMent_MeshDcomp-GO_2022_s_, either _CTD_extraido_u.txt_ (first argument)
-This script reads both input files, matches and combines their information and saves them as a new output file (_coment_updated.txt or CTD_updated.txt_)
+Besides _output.txt_, there is another file required as input, either _CoMent_MeshDcomp-GO_2022_s_, either _CTD_extraido_u.txt_ (first argument).
+This script reads both input files, matches and combines their information and saves them as a new output file (_coment_updated.txt or CTD_updated.txt_).
 ```
 python3 match_coment_CTDcoment_output.py first_file output.txt
 ```
