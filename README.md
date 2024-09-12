@@ -12,7 +12,7 @@ python3 CTD.py CTDfile
 Finally, remove the duplicates from the _CTD_extraido.txt_ file and save it like another file (from now on, refered as _CTD_extraido_u.txt_)
 
 ## 2. match_coincidencias.py
-You need the _CTD_extraido_u.txt_ file and the _CoMent_MeshDcomp-GO_2022_s_ file which you obtain from .....
+You need the _CTD_extraido_u.txt_ file and the _CoMent_MeshDcomp-GO_2022_s_ file which you obtain from [J.Novoa et al](https://pubmed.ncbi.nlm.nih.gov/38564426/)
 _CoMent_MeshDcomp-GO_2022_s_ file contains MeSH and GO identifiers, number of articles associated with the MeSH term, with the GO term, with both terms and p-value.
 The script searches for MeSH and GO terms that are common between both files and saves them in a file called _match_final.txt_
 ```
@@ -43,7 +43,7 @@ This script reads both input files, matches and combines their information and s
 ```
 python3 match_coment_CTDcoment_output.py first_file output.txt
 ```
-To execute the scripts correctly, you need to first run the script with the _CoMent_MeshDcomp-GO_2022_s_ file as input, and then run the next script with the _CTD_extraido_u.txt_ file, repeating this process twice to obtain the necessary files for the subsequent script.
+"It is required to run this script using both CoMent and CTD input files in order to generate the two input files needed for (script number 6)
 
 ## 6. match_vdiccplot_comorig_rel.py
 You need _coment_updated.txt_, _CTD_updated.txt_ and column number. The first version of this script only accepts 7 as a valid argument of column number, this being the depth of the GO terms.
